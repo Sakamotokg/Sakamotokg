@@ -1,0 +1,101 @@
+body {
+    font-family: 'Great Vibes', cursive; /* Changed font to Great Vibes, a cute and playful font */
+    background-color: #f7f7f7; /* Added a light gray background */
+  }
+  
+  #products {
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 10px; /* Added a subtle border radius */
+    overflow: hidden; /* Added to prevent table from overflowing */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Added a subtle box shadow */
+  }
+  
+  #products th, #products td {
+    border: 1px solid #000000; /* Changed border color to a darker gray */
+    padding: 15px; /* Increased padding for better readability */
+    text-align: left;
+    font-weight: bold; /* Made font bold */
+    font-size: 18px; /* Increased font size for better readability */
+  }
+  
+  #products th {
+    background-color: #333; /* Changed header background to a dark gray */
+    color: #fff; /* Changed header text color to white */
+  }
+  
+  #products th:nth-child(1) { /* Teacher column */
+    background-color: #8bc34a; /* Added a greenish background */
+  }
+  
+  #products th:nth-child(2) { /* Day column */
+    background-color: #4caf50; /* Added a green background */
+  }
+  
+  #products th:nth-child(3) { /* Time column */
+    background-color: #03a9f4; /* Added a blue background */
+  }
+  
+  #products th:nth-child(4) { /* Grade column */
+    background-color: #ff9800; /* Added an orange background */
+  }
+  
+  #products th:nth-child(5) { /* Kelas column */
+    background-color: #9c27b0; /* Added a purple background */
+  }
+
+  #products th:nth-child(6) { /* Kelas column */
+    background-color: #F26CF7; /* Added a purple background */
+  }
+  
+  .white-bg {
+    background-color: #FFFFFF;
+  }
+  
+  .gray-bg {
+    background-color: #e2e2e2;
+  }
+
+  button {
+    font-family: 'Great Vibes', cursive; 
+    background-color: #7969d4;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #6153ac;
+  }
+
+  .active {
+    background-color: #e43232; /* Active button color */
+    color: white;
+  }
+
+  .active:hover {
+    background-color: #cc2e2e; /* Active button color */
+    color: white;
+  }
+
+  #button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  #button-container button {
+    padding: 10px;
+     border: 1px solid #000000;
+    cursor: pointer;
+  }
+
+ 
+ 
