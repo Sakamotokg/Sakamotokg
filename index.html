@@ -5,7 +5,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="title-container">
   <h1>Cari Jadwal Sakamoto</h1>
+</div>
   <div id="button-container">
     <button id="filter-dea">Ms. Dea</button>
     <button id="filter-yola">Ms. Yola</button>
@@ -27,18 +29,18 @@
     <button id="filter-thur">Thursday</button>
     <button id="filter-fri">Friday</button>
     <button id="filter-sat">Saturday</button>
-    <button id="filter-g1">Grade 1</button>
-    <button id="filter-g2">Grade 2</button>
-    <button id="filter-g3">Grade 3</button>
-    <button id="filter-g4">Grade 4</button>
-    <button id="filter-g5">Grade 5</button>
-    <button id="filter-g6">Grade 6</button>
-    <button id="filter-k1">Kelas 1</button>
-    <button id="filter-k2">Kelas 2</button>
-    <button id="filter-k3">Kelas 3</button>
-    <button id="filter-k4">Kelas 4</button>
-    <button id="filter-k5">Kelas 5</button>
-    <button id="filter-k6">Kelas 6</button>
+    <button id="filter-g1" >Grade 1</button>
+    <button id="filter-g2" >Grade 2</button>
+    <button id="filter-g3" >Grade 3</button>
+    <button id="filter-g4" >Grade 4</button>
+    <button id="filter-g5" >Grade 5</button>
+    <button id="filter-g6" >Grade 6</button>
+    <button id="filter-k1" >Kelas 1</button>
+    <button id="filter-k2" >Kelas 2</button>
+    <button id="filter-k3" >Kelas 3</button>
+    <button id="filter-k4" >Kelas 4</button>
+    <button id="filter-k5" >Kelas 5</button>
+    <button id="filter-k6" >Kelas 6</button>
     <button id="filter-full">Full</button>
     <button id="filter-avail">Avail</button>
   </div>
@@ -49,17 +51,17 @@
         <th>Teacher</th>
         <th>Day</th>
         <th>Time</th>
-        <th>Grade</th>
-        <th>Kelas</th>
+        <th>Grade/Kelas</th>
         <th>Status</th>
       </tr>
     </thead>
     <tbody id="table-body"></tbody>
+  
   </table>
   <script>
     const API_KEY = 'AIzaSyBSVErjJ4nkV8K_n0W5pGw6o7Ib6cNW_9Y';
     const SPREADSHEET_ID = '1loGn-rvjnjbdi_c9ZdoJpUyytdN4F_wsxhPXUDdNYDE';
-    const RANGE = 'Sheet1!A1:F';
+    const RANGE = 'Sheet1!A1:E';
 
     async function fetchData() {
       try {
@@ -80,69 +82,105 @@
     
       const dayGroups = {
         'Monday': [],
-        'Thursday': [],
         'Tuesday': [],
-        'Friday': [],
         'Wednesday': [],
+        'Thursday': [],
+        'Friday': [],
         'Saturday': []
       };
     
       products.forEach((product) => {
         const day = product[1];
-        const grade = product[3];
-        const kelas = product[4];
-    
-        dayGroups[day].push({ grade, kelas, product });
+        dayGroups[day].push(product);
       });
     
-      let mondayThursdayCounter = 0;
-      let tuesdayFridayCounter = 0;
-      let wednesdaySaturdayCounter = 0;
+      let counter = 0;
     
       let days = [['Monday', 'Thursday'], ['Tuesday', 'Friday'], ['Wednesday', 'Saturday']];
       for (let i = 0; i < days.length; i++) {
         const day1 = days[i][0];
         const day2 = days[i][1];
     
-        dayGroups[day1].sort((a, b) => a.grade.localeCompare(b.grade) || a.kelas.localeCompare(b.kelas));
-        dayGroups[day2].sort((a, b) => a.grade.localeCompare(b.grade) || a.kelas.localeCompare(b.kelas));
+        dayGroups[day1].sort((a, b) => a[3].localeCompare(b[3]));
+        dayGroups[day2].sort((a, b) => a[3].localeCompare(b[3]));
     
-        let counter = i === 2 ? wednesdaySaturdayCounter : i === 1 ? tuesdayFridayCounter : mondayThursdayCounter;
-    
-        const gradeGroupsDay1 = {};
+        let gradeGroupsDay1 = {};
         dayGroups[day1].forEach((product) => {
-          if (!gradeGroupsDay1[product.grade + product.kelas]) {
-            gradeGroupsDay1[product.grade + product.kelas] = [];
+          if (!gradeGroupsDay1[product[3]]) {
+            gradeGroupsDay1[product[3]] = [];
           }
-          gradeGroupsDay1[product.grade + product.kelas].push(product);
+          gradeGroupsDay1[product[3]].push(product);
         });
     
-        const gradeGroupsDay2 = {};
+        let gradeGroupsDay2 = {};
         dayGroups[day2].forEach((product) => {
-          if (!gradeGroupsDay2[product.grade + product.kelas]) {
-            gradeGroupsDay2[product.grade + product.kelas] = [];
+          if (!gradeGroupsDay2[product[3]]) {
+            gradeGroupsDay2[product[3]] = [];
           }
-          gradeGroupsDay2[product.grade + product.kelas].push(product);
+          gradeGroupsDay2[product[3]].push(product);
         });
     
         Object.keys(gradeGroupsDay1).forEach((key) => {
           const productsDay1 = gradeGroupsDay1[key];
           const productsDay2 = gradeGroupsDay2[key];
-    
+        
+          let classNameDay1, classNameDay2;
+          switch (day1) {
+            case 'Monday':
+              classNameDay1 = 'monday-bg';
+              break;
+            case 'Tuesday':
+              classNameDay1 = 'tuesday-bg';
+              break;
+            case 'Wednesday':
+              classNameDay1 = 'wednesday-bg';
+              break;
+            case 'Thursday':
+              classNameDay1 = 'thursday-bg';
+              break;
+            case 'Friday':
+              classNameDay1 = 'friday-bg';
+              break;
+            case 'Saturday':
+              classNameDay1 = 'saturday-bg';
+              break;
+          }
+        
+          switch (day2) {
+            case 'Monday':
+              classNameDay2 = 'monday-bg';
+              break;
+            case 'Tuesday':
+              classNameDay2 = 'tuesday-bg';
+              break;
+            case 'Wednesday':
+              classNameDay2 = 'wednesday-bg';
+              break;
+            case 'Thursday':
+              classNameDay2 = 'thursday-bg';
+              break;
+            case 'Friday':
+              classNameDay2 = 'friday-bg';
+              break;
+            case 'Saturday':
+              classNameDay2 = 'saturday-bg';
+              break;
+          }
+        
           productsDay1.forEach((productDay1) => {
             const trDay1 = document.createElement('tr');
-            trDay1.className = counter % 2 === 0 ? 'white-bg' : 'gray-bg';
-            productDay1.product.forEach((cell) => {
+            trDay1.className = classNameDay1;
+            productDay1.forEach((cell) => {
               const td = document.createElement('td');
               td.textContent = cell;
               trDay1.appendChild(td);
             });
             tableBody.appendChild(trDay1);
-    
+        
             if (productsDay2.length > 0) {
               const trDay2 = document.createElement('tr');
-              trDay2.className = trDay1.className;
-              productsDay2[0].product.forEach((cell) => {
+              trDay2.className = classNameDay2;
+              productsDay2[0].forEach((cell) => {
                 const td = document.createElement('td');
                 td.textContent = cell;
                 trDay2.appendChild(td);
@@ -152,32 +190,21 @@
             } else {
               tableBody.appendChild(trDay1.cloneNode(true));
             }
-    
-            counter++;
           });
-    
+        
           if (productsDay2.length > 0) {
             productsDay2.forEach((productDay2) => {
               const trDay2 = document.createElement('tr');
-              trDay2.className = counter % 2 === 0 ? 'white-bg' : 'gray-bg';
-              productDay2.product.forEach((cell) => {
+              trDay2.className = classNameDay2;
+              productDay2.forEach((cell) => {
                 const td = document.createElement('td');
                 td.textContent = cell;
                 trDay2.appendChild(td);
               });
               tableBody.appendChild(trDay2);
-              counter++;
             });
           }
         });
-    
-        if (i === 0) {
-          mondayThursdayCounter = counter;
-        } else if (i === 1) {
-          tuesdayFridayCounter = counter;
-        } else {
-          wednesdaySaturdayCounter = counter;
-        }
       }
     }
     
@@ -227,6 +254,7 @@ function applyFilters() {
   }
 }
 
+
     const filters = [
       { id: 'filter-dea', column: 0, value: 'Ms. Dea' },
       { id: 'filter-yola', column: 0, value: 'Ms. Yola' },
@@ -254,14 +282,14 @@ function applyFilters() {
       { id: 'filter-g4', column: 3, value: 'Grade 4' },
       { id: 'filter-g5', column: 3, value: 'Grade 5' },
       { id: 'filter-g6', column: 3, value: 'Grade 6' },
-      { id: 'filter-k1', column: 4, value: 'Kelas 1' },
-      { id: 'filter-k2', column: 4, value: 'Kelas 2' },
-      { id: 'filter-k3', column: 4, value: 'Kelas 3' },
-      { id: 'filter-k4', column: 4, value: 'Kelas 4' },
-      { id: 'filter-k5', column: 4, value: 'Kelas 5' },
-      { id: 'filter-k6', column: 4, value: 'Kelas 6' },
-      { id: 'filter-full', column: 5, value: 'Full' },
-      { id: 'filter-avail', column: 5, value: 'Avail' },
+      { id: 'filter-k1', column: 3, value: 'Kelas 1' },
+      { id: 'filter-k2', column: 3, value: 'Kelas 2' },
+      { id: 'filter-k3', column: 3, value: 'Kelas 3' },
+      { id: 'filter-k4', column: 3, value: 'Kelas 4' },
+      { id: 'filter-k5', column: 3, value: 'Kelas 5' },
+      { id: 'filter-k6', column: 3, value: 'Kelas 6' },
+      { id: 'filter-full', column: 4, value: 'Full' },
+      { id: 'filter-avail', column: 4, value: 'Avail' },
     ];
 
     filters.forEach((filter) => {

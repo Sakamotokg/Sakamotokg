@@ -1,101 +1,163 @@
 body {
-    font-family: 'Great Vibes', cursive; /* Changed font to Great Vibes, a cute and playful font */
-    background-color: #f7f7f7; /* Added a light gray background */
-  }
-  
-  #products {
-    border-collapse: collapse;
-    width: 100%;
-    border-radius: 10px; /* Added a subtle border radius */
-    overflow: hidden; /* Added to prevent table from overflowing */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Added a subtle box shadow */
-  }
-  
-  #products th, #products td {
-    border: 1px solid #000000; /* Changed border color to a darker gray */
-    padding: 15px; /* Increased padding for better readability */
-    text-align: left;
-    font-weight: bold; /* Made font bold */
-    font-size: 18px; /* Increased font size for better readability */
-  }
-  
-  #products th {
-    background-color: #333; /* Changed header background to a dark gray */
-    color: #fff; /* Changed header text color to white */
-  }
-  
-  #products th:nth-child(1) { /* Teacher column */
-    background-color: #8bc34a; /* Added a greenish background */
-  }
-  
-  #products th:nth-child(2) { /* Day column */
-    background-color: #4caf50; /* Added a green background */
-  }
-  
-  #products th:nth-child(3) { /* Time column */
-    background-color: #03a9f4; /* Added a blue background */
-  }
-  
-  #products th:nth-child(4) { /* Grade column */
-    background-color: #ff9800; /* Added an orange background */
-  }
-  
-  #products th:nth-child(5) { /* Kelas column */
-    background-color: #9c27b0; /* Added a purple background */
-  }
+  font-family: 'Great Vibes', cursive; /* Changed font to Great Vibes, a cute and playful font */
+  background-color: #f7f7f7; /* Added a light gray background */
+}
 
-  #products th:nth-child(6) { /* Kelas column */
-    background-color: #F26CF7; /* Added a purple background */
-  }
-  
-  .white-bg {
-    background-color: #FFFFFF;
-  }
-  
-  .gray-bg {
-    background-color: #e2e2e2;
-  }
+#products {
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 5px; /* Added a subtle border radius */
+  overflow: hidden; /* Added to prevent table from overflowing */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Added a subtle box shadow */
+}
 
-  button {
-    font-family: 'Great Vibes', cursive; 
-    background-color: #7969d4;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-  }
-  
-  button:hover {
-    background-color: #6153ac;
-  }
+#products th, #products td {
+  border: 2px solid #000000; /* Changed border color to a darker gray */
+  padding: 15px; /* Increased padding for better readability */
+  text-align: left;
+  font-weight: bold; /* Made font bold */
+  font-size: 18px; /* Increased font size for better readability */
+}
 
-  .active {
-    background-color: #e43232; /* Active button color */
-    color: white;
-  }
+#products th {
+  border: 2px solid #000000;
+  background-color: #333; /* Changed header background to a dark gray */
+  color: #fff; /* Changed header text color to white */
+}
 
-  .active:hover {
-    background-color: #cc2e2e; /* Active button color */
-    color: white;
-  }
+#products th:nth-child(1) { /* Teacher column */
+  background-color: #e93a3a; /* Added a greenish background */
+}
 
-  #button-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
+#products th:nth-child(2) { /* Day column */
+  background-color: #4caf50; /* Added a green background */
+}
 
-  #button-container button {
-    padding: 10px;
-     border: 1px solid #000000;
-    cursor: pointer;
-  }
+#products th:nth-child(3) { /* Time column */
+  background-color: #03a9f4; /* Added a blue background */
+}
 
- 
- 
+#products th:nth-child(4) { /* Grade column */
+  background-color: #ff9800; /* Added an orange background */
+}
+
+#products th:nth-child(5) { /* Kelas column */
+  background-color: #9c27b0; /* Added a purple background */
+}
+
+#products th:nth-child(6) { /* Kelas column */
+  background-color: #F26CF7; /* Added a purple background */
+}
+
+.white-bg {
+  background-color: #FFFFFF;
+}
+
+.gray-bg {
+  background-color: #c2c1c1;
+}
+
+button {
+  font-family: 'Great Vibes', cursive;
+  background-color: #7969d4;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  width: 100px; /* Reduced width for buttons */
+}
+
+button:hover {
+  background-color: #6153ac;
+}
+
+.active {
+  background-color: #e43232; /* Active button color */
+  color: white;
+}
+
+.active:hover {
+  background-color: #cc2e2e; /* Active button color */
+  color: white;
+}
+
+#button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px; /* Added space between buttons and table */
+}
+
+#button-container button {
+  border: 2px solid #000000;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Added title styling */
+h1 {
+  font-family: 'Roboto', sans-serif; /* Changed font to Raleway */
+  text-align: center;
+  font-size: 40px; /* Increased font size */
+  padding: 20px; /* Increased padding */
+  color: rgb(0, 50, 131); /* Title text color */
+  background-color: #048eff; /* Title background color */
+  border-radius: 12px; /* Increased border radius */
+  margin-bottom: 30px; /* Increased space between title and button container */
+  text-shadow: 1px 1px 0 #ffffff, /* Right shadow */
+               -1px -1px 0 #ffffff, /* Left shadow */
+               1px -1px 0 #ffffff, /* Top-right shadow */
+               -1px 1px 0 #ffffff; /* Bottom-left shadow */
+  border: 2px solid #000; /* Added border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added box shadow */
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+  height: 60px; /* Add a fixed height to the title container */
+  margin-bottom: 20px; /* Add some space between the title and the buttons */
+}
+
+.title-container h1 {
+  margin: 0; /* Remove default margin from h1 */
+  padding: 10px; /* Add some padding to the h1 */
+  background-color: #048eff; /* Keep the background color */
+  border-radius: 12px; /* Keep the border radius */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Keep the box shadow */
+}
+
+#table-container {
+  height: 300px; /* Set a fixed height for the table container */
+  overflow-y: auto; /* Add a scrollbar if the content exceeds the height */
+}
+
+.monday-bg {
+  background-color: #f38d48; /* a light green color */
+}
+
+.tuesday-bg {
+  background-color: #b659f5; /* a light orange color */
+}
+
+.wednesday-bg {
+  background-color: #17e956; /* a light blue color */
+}
+
+.thursday-bg {
+  background-color: #f6f864; /* a light yellow-orange color */
+}
+
+.friday-bg {
+  background-color: #fd69dd; /* a light blue-green color */
+}
+
+.saturday-bg {
+  background-color: #5bfcb1; /* a light pink color */
+}
